@@ -41,6 +41,8 @@ function AddContact(props) {
                 })
             );
             setToggleSubmit(true);
+            setInputName("");
+            setInputEmail("");
         } else {
             let id = contact.length !== 0 ? contact[contact.length - 1].id + 1 : 1;
             const add = {
