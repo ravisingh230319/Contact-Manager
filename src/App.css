@@ -1,0 +1,40 @@
+.main{
+  background:rgb(75, 73, 175);
+}
+.App {
+  text-align: center;
+  background:brown
+}
+
+.addContactForm{
+  margin:10px;
+  color:white
+}
+.list{
+  margin:10px;
+  background:black;
+  color:white
+}
+.btn-add{
+  background-color: rgb(47, 236, 0);
+  margin:10px;
+  border-radius: 8px;
+}
+
+.btn-update{
+  background-color: rgb(47, 236, 0);
+  margin:10px;
+  border-radius: 8px;
+}
+
+.btn-delete{
+  margin-left: 100px;
+  background-color: red;
+  border-radius: 8px;
+}
+
+.btn-edit{
+  margin-left: 100px;
+  background-color: red;
+  border-radius: 8px;
+}
