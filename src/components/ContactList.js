@@ -1,18 +1,27 @@
-function ContactList({contacts, onEdit, onDelete}) {
+function ContactList({ contacts, onEdit, onDelete }) {
 
     return (
-        <div className="list">
-            <label>{contacts.name}</label>
-            <label style={{ marginLeft: "40px" }}>{contacts.email}</label>
-            <button className="btn-edit" onClick={() => { onEdit(contacts) }}>
-                Edit
-            </button>
-            <button className="btn-delete" onClick={() => { onDelete(contacts.id) }}>
-                Delete
-            </button>
-            <br />
-        </div>
+        <>
+            {
+                contacts.map((contact) => {
+                    return (
+                        <div className="list" key={contact.id}>
+                            <label>{contact.name}</label>
+                            <label style={{ marginLeft: "40px" }}>{contact.email}</label>
+                            <button className="btn-edit" onClick={() => { onEdit(contact) }}>
+                                Edit
+                            </button>
+                            <button className="btn-delete" onClick={() => { onDelete(contact.id) }}>
+                                Delete
+                            </button>
+                            <br />
+                        </div>
+                    )
+                })
+            }
+        </>
     );
+
 }
 
 export default ContactList;

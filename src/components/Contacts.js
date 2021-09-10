@@ -1,8 +1,9 @@
-import ".././App.css";
-import React, { useState } from "react";
-import ContactList from "./ContactList";
+import React,{ useState } from 'react'
+import Header from './Header'
+import AddContactForm from './AddContactForm'
+import ContactList from './ContactList';
 
-function AddContact() {
+function Contacts() {
     const [inputName, setInputName] = useState("");
     const [inputEmail, setInputEmail] = useState("");
     const [toggleSubmit, setToggleSubmit] = useState(true);
@@ -41,19 +42,18 @@ function AddContact() {
                 })
             );
             setToggleSubmit(true);
-            setInputName("");
-            setInputEmail("");
         } else {
-            let id = contact.length !== 0 ? contact[contact.length - 1].id + 1 : 1;
+            let id =
+                contact.length !== 0 ? contact[contact.length - 1].id + 1 : 1;
             const add = {
                 id: id,
                 name: inputName,
                 email: inputEmail,
             };
             setContact([...contact, add]);
-            setInputName("");
-            setInputEmail("");
         }
+        setInputName("");
+        setInputEmail("");
     };
 
     const onDelete = (id) => {
@@ -72,38 +72,19 @@ function AddContact() {
     };
 
     return (
-        <>
-            <form className="addContactForm">
-                <div style={{ margin: 10 }}>
-                    <label>Name</label>
-                    <input
-                        type="text"
-                        value={inputName}
-                        onChange={(e) => setInputName(e.target.value)}
-                        placeholder="Enter name"
-                    ></input>
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input
-                        type="text"
-                        value={inputEmail}
-                        onChange={(e) => setInputEmail(e.target.value)}
-                        placeholder="Enter email"
-                    ></input>
-                </div>
-                {toggleSubmit ? (
-                    <button onClick={addContact} className="btn-add"> Add </button> ) : (
-                    <button onClick={addContact} className="btn-update"> Update </button>
-                )}
-            </form>
-            {contact.map((c) => {
-                return (
-                    <ContactList contacts={c} key={c.id} onDelete={onDelete} onEdit={handleEdit}/>
-                );
-            })}
-        </>
-    );
+        <div>
+            <Header />
+            <AddContactForm
+                inputName={inputName}
+                setInputName={setInputName}
+                inputEmail={inputEmail}
+                setInputEmail={setInputEmail}
+                addContact={addContact}
+                toggleSubmit={toggleSubmit}
+            />
+            <ContactList contacts={contact} onDelete={onDelete} onEdit={handleEdit} />
+        </div>
+    )
 }
 
-export default AddContact;
+export default Contacts
