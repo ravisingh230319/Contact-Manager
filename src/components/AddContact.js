@@ -2,7 +2,7 @@ import ".././App.css";
 import React, { useState } from "react";
 import ContactList from "./ContactList";
 
-function AddContact(props) {
+function AddContact() {
     const [inputName, setInputName] = useState("");
     const [inputEmail, setInputEmail] = useState("");
     const [toggleSubmit, setToggleSubmit] = useState(true);
