@@ -1,13 +1,19 @@
-import React,{ useState } from 'react'
-import Header from './Header'
-import AddContactForm from './AddContactForm'
+import React,{ useState, useEffect, createContext } from 'react';
+import Header from './Header';
+import AddContactForm from './AddContactForm';
 import ContactList from './ContactList';
+
+const DataContext=createContext();
 
 function Contacts() {
     const [inputName, setInputName] = useState("");
     const [inputEmail, setInputEmail] = useState("");
     const [toggleSubmit, setToggleSubmit] = useState(true);
     const [isEditItem, setIsEditItem] = useState(null);
+
+    useEffect(() => {
+        document.title="Contact Manager";
+    },)
 
     const [contact, setContact] = useState([
         {
@@ -74,17 +80,13 @@ function Contacts() {
     return (
         <div>
             <Header />
-            <AddContactForm
-                inputName={inputName}
-                setInputName={setInputName}
-                inputEmail={inputEmail}
-                setInputEmail={setInputEmail}
-                addContact={addContact}
-                toggleSubmit={toggleSubmit}
-            />
-            <ContactList contacts={contact} onDelete={onDelete} onEdit={handleEdit} />
+            <DataContext.Provider value={{ inputName, setInputName, inputEmail, setInputEmail, addContact, toggleSubmit, contact, handleEdit, onDelete }}>
+                <AddContactForm />
+                <ContactList />
+            </DataContext.Provider>
         </div>
     )
 }
 
-export default Contacts
+export default Contacts;
+export { DataContext };

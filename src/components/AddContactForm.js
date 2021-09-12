@@ -1,7 +1,10 @@
 import ".././App.css";
+import { useContext } from "react";
+import { DataContext } from "./Contacts";
 
-function AddContactForm({inputName, setInputName, inputEmail, setInputEmail, addContact, toggleSubmit}) {
-    
+function AddContactForm() {
+    const { inputName, inputEmail, setInputName, setInputEmail, addContact, toggleSubmit } = useContext(DataContext);
+
     return (
             <form className="addContactForm">
                 <div style={{ margin: 10 }}>
